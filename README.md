@@ -74,3 +74,17 @@ describe('Your website', function () {
   })
 })
 ```
+If you need help, here's an example of getting cookies with puppeteer: https://github.com/brendonbarreto/robot-eyes/blob/master/examples/getCookies.js
+
+`delay`: Wait for some time(ms), or a specific selector to be present. Examples: `1000`, `'.card'`.
+
+`removeSelectors`: Remove from DOM a list of selectors. Example: `['.container-time', 'container-date']` 
+
+`onReady`: function to be right before the screenshot. It receives puppeteer page, as first argument. Useful for more complex setups:
+```js
+onReady: async page => {
+   await page.click('.btn-open-modal')
+   await page.waitFor('.modal.in')
+   await page.waitFor(150)
+}
+```
