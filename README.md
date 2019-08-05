@@ -48,7 +48,7 @@ Currently we support only mocha. So you will need to create a mocha test file, t
 ```javascript
 const test = require('robot-eyes/test')
 
-describe('Mercos', function () {
+describe('Your website', function () {
   it('Login', function () {
     return test('/login', this.test.title)
   })
@@ -88,3 +88,29 @@ onReady: async page => {
    await page.waitFor(150)
 }
 ```
+
+More options will be available as needed.
+
+## Commands
+There are 3 commands, **test, report and approve**. If you need help, you can use `--help` and look at the description of each one.
+
+### test
+```
+npx robot-eyes test testfile.js
+```
+Do all the magic...Capture screenshots and compare with baselines.
+- `--grep`: specify a patern to match test name
+- `--report`: open report after test if it fails
+
+### approve
+```
+npx robot-eyes approve "Test name"
+```
+Approve the test, in all viewports. You can use `--viewport` to specify just one.
+
+### report
+```
+npx robot-eyes report
+```
+
+Open an electron report, where you can look at the diferences and approve them.
