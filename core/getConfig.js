@@ -2,15 +2,15 @@ const path = require('path')
 const fs = require('fs')
 
 const getConfig = () => {
-  const configFile = fs.readFileSync(process.cwd() + '/stoned.config.json')
+  const configFile = fs.readFileSync(process.cwd() + '/robot-eyes.json')
   const userConfig = JSON.parse(configFile)
   return Object.assign({
     baseURL: null,
     paths: {
-      testFiles: path.resolve('./stoned/test_files'),
-      testImages: path.resolve('./stoned/test_images'),
-      diffImages: path.resolve('./stoned/diff_images'),
-      referenceImages: path.resolve('./stoned/reference_images')
+      testFiles: path.resolve('./robot_eyes/test_files'),
+      testImages: path.resolve('./robot_eyes/test_images'),
+      diffImages: path.resolve('./robot_eyes/diff_images'),
+      referenceImages: path.resolve('./robot_eyes/reference_images')
     },
     viewports: [
       {
