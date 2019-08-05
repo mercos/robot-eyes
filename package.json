@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/brendonbarreto/robot-eyes.git"
   },
+  "bin": {
+    "robot-eyes": "index.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
