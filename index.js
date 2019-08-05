@@ -50,7 +50,4 @@ program
       })
   })
 
-program
-  .command('set-references')
-
 program.parse(process.argv)
