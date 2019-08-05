@@ -1,4 +1,4 @@
-# robot-eyes
+## robot-eyes
 Visual regression testing
 
 ## Installation
@@ -40,4 +40,37 @@ First create `robot-eyes.json` in your project root folder. Here's a list of the
    headless: true,
    threshold: 0.01
 }
+```
+
+## Creating a test file
+Currently we support only mocha. So you will need to create a mocha test file, that look like this:
+
+```javascript
+const test = require('robot-eyes/test')
+
+describe('Mercos', function () {
+  it('Login', function () {
+    return test('/login', this.test.title)
+  })
+})
+```
+
+### Aditional options
+robot-eyes/test receives an object as 3rd argument. By default, robot-eyes only go to the page, and take a screenshot, with this options you can add some extra behavior. Here is the list of available options:
+
+`cookies`: If your application needs authorization, it's the best option. Here's an example:
+```javascript
+const test = require('robot-eyes/test')
+const getCookies = require('./getCookies')
+
+describe('Your website', function () {
+  let cookies = []
+  before(async function () {
+    cookies = await getCookies()
+  })
+
+  it('Transactions', function () {
+    return test('/transactions', this.test.title, {cookies})
+  })
+})
 ```
