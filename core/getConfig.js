@@ -21,7 +21,7 @@ const getConfig = () => {
     headless: true,
     threshold: 0.01
   }, userConfig)
-  config.paths = Object.keys(config.paths)
+  Object.keys(config.paths)
     .forEach(v => config.paths[v] = path.resolve(config.paths[v]))
 
   return config
