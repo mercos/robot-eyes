@@ -113,4 +113,4 @@ Approve the test, in all viewports. You can use `--viewport` to specify just one
 npx robot-eyes report
 ```
 
-Open an electron report, where you can look at the diferences and approve them.
+Start a express server where you can look and see and approve differences. Default port is 3000, but you can set it with `--port`
