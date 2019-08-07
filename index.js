@@ -39,11 +39,12 @@ program
   .command('approve [test-name]')
   .description("Approve")
   .option('-w, --viewport <viewport-name>', 'Approve single viewport')
-  .action(function (a, b) {
-    approve(a, b.viewport)
+  .action(function (testName, b) {
+    approve(testName, b.viewport)
       .then(() => {
         process.exitCode = 0
-        console.log(chalk.green(`${a} successfully approved`));
+        const message = testName ? `${testName} successfully approved` : 'Successfully approved all'
+        console.log(chalk.green(message));
       })
       .catch((e) => {
         process.exitCode = 1
