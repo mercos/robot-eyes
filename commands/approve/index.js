@@ -38,14 +38,16 @@ const approveAllViewportsFromTest = async (config, fileName, resolve, reject) =>
 const approve = (testName, viewport) => {
   return new Promise(async (resolve, reject) => {
     const config = getConfig()
-    const fileName = testNameToFileName(testName)
 
-    if (!a) {
+    if (!testName) {
       await approveAll(config, resolve, reject)
-    } else if (viewport) {
-      await approveSingleViewport(config, fileName, viewport, resolve, reject)
     } else {
-      await approveAllViewportsFromTest(config, fileName, resolve, reject)
+      const fileName = testNameToFileName(testName)
+      if (viewport) {
+        await approveSingleViewport(config, fileName, viewport, resolve, reject)
+      } else {
+        await approveAllViewportsFromTest(config, fileName, resolve, reject)
+      }
     }
   })
 }
