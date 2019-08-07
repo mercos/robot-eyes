@@ -30,8 +30,9 @@ program
 program
   .command('report')
   .description("Open report")
-  .action(() => {
-    report()
+  .option('-p, --port <port-number>', 'Run report on specific port')
+  .action((options) => {
+    report(options.port)
   })
 
 program

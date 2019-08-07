@@ -1,9 +1,9 @@
 const robotEyesReport = require('robot-eyes-report')
 const getFailedTests = require('../../core/getFailedTests')
 
-const report = () => {
+const report = port => {
   const failedTests = getFailedTests()
-  robotEyesReport(failedTests)
+  robotEyesReport(failedTests, port)
 }
 
 module.exports = report
