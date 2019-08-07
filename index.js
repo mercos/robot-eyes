@@ -36,7 +36,7 @@ program
   })
 
 program
-  .command('approve <test-name>')
+  .command('approve [test-name]')
   .description("Approve")
   .option('-w, --viewport <viewport-name>', 'Approve single viewport')
   .action(function (a, b) {
