@@ -25,10 +25,9 @@ First create `robot-eyes.json` in your project root folder. Here's a list of the
 {
    baseURL: null,
    paths: {
-      testFiles: path.resolve('./robot_eyes/test_files'),
-      testImages: path.resolve('./robot_eyes/test_images'),
-      diffImages: path.resolve('./robot_eyes/diff_images'),
-      referenceImages: path.resolve('./robot_eyes/reference_images')
+      testImages: './robot_eyes/test_images',
+      diffImages: './robot_eyes/diff_images',
+      referenceImages: './robot_eyes/reference_images'
    },
    viewports: [
    {
