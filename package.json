@@ -27,6 +27,7 @@
     "pixelmatch": "^5.0.2",
     "pngjs": "^3.4.0",
     "puppeteer": "^1.17.0",
-    "rimraf": "^2.6.3"
+    "rimraf": "^2.6.3",
+    "robot-eyes-report": "^1.0.3"
   }
 }

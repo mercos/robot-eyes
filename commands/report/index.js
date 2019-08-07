@@ -1,13 +1,9 @@
-var exec = require('child_process').exec
+const robotEyesReport = require('robot-eyes-report')
+const getFailedTests = require('../../core/getFailedTests')
 
 const report = () => {
-  const cwd = process.cwd()
-
-  exec(`cd node_modules/robot-eyes/report && npx webpack && npx electron . --root-path=${cwd}`, {
-    cwd
-  }, (a, b, c) => {
-    console.log(a, b, c)
-  })
+  const failedTests = getFailedTests()
+  robotEyesReport(failedTests)
 }
 
 module.exports = report

@@ -1,7 +1,7 @@
-const getConfig = require('../../core/getConfig')
+const getConfig = require('./getConfig')
 const path = require('path')
-const getFilePath = require('../../core/getFilePath')
-const walkSync = require('../../core/walkSync')
+const getFilePath = require('./getFilePath')
+const walkSync = require('./walkSync')
 
 const getFailedTests = () => {
   const config = getConfig()
