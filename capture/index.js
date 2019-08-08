@@ -18,7 +18,7 @@ const capture = async (url, testName, options = {}) => {
 
     const fullUrl = `${config.baseURL}${url}`
 
-    await page.goto(fullUrl, {waitUntil: 'networkidle0', timeout: 5000})
+    await page.goto(fullUrl)
 
     if (options.delay) {
       await waitFor(page, [options.delay])
