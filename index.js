@@ -12,6 +12,7 @@ program
   .description("Run tests")
   .option('-g, --grep <pattern>', 'Only run tests matching <pattern>')
   .option('-r, --report', 'Open report automatically if tests failed')
+  .option('--base-url <url>', 'Override baseURL from robot-eyes.json')
   .action((a, b) => {
     test(a, b.grep)
       .then(() => process.exitCode = 0)
