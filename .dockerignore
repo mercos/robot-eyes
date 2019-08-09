@@ -1,1 +1,6 @@
-**node_modules/**
+# Ignore everything
+**
+
+# Allow files and directories
+!/package.json
+!/yarn.lock
