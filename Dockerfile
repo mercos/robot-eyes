@@ -17,8 +17,10 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 
 WORKDIR /usr/src
 COPY package.json .
+COPY yarn.lock .
 RUN npm install -g yarn && \
-    yarn add robot-eyes@${ROBOT_EYES_VERSION}
+    yarn add robot-eyes@${ROBOT_EYES_VERSION} && \
+    rm -rf /usr/local/share/.cache/yarn/*
 
 ENV NODE_PATH=/usr/src/node_modules PATH=/usr/src/node_modules/.bin:${PATH}
 
