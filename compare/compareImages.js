@@ -1,15 +1,12 @@
-var fs = require('fs'),
-  PNG = require('pngjs').PNG,
-  pixelmatch = require('pixelmatch');
+const fs = require('fs')
+const resembleCompare = require('resemblejs/compareImages')
 const getConfig = require('../core/getConfig')
 const getFilePath = require('../core/getFilePath')
 const createFolder = require('../core/createFolder')
-const resembleCompare = require('resemblejs/compareImages')
 
 const compareImages = (fileName, viewport) => {
   return new Promise(async (resolve, reject) => {
     const config = getConfig()
-    console.log()
 
     try {
       const referenceImage = fs.readFileSync(getFilePath(config.paths.referenceImages, fileName, viewport))
