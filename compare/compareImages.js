@@ -4,6 +4,7 @@ var fs = require('fs'),
 const getConfig = require('../core/getConfig')
 const getFilePath = require('../core/getFilePath')
 const createFolder = require('../core/createFolder')
+const resembleCompare = require('resemblejs/compareImages')
 
 const compareImages = (fileName, viewport) => {
   return new Promise(async (resolve, reject) => {
@@ -11,18 +12,26 @@ const compareImages = (fileName, viewport) => {
     console.log()
 
     try {
-      const referenceImage = PNG.sync.read(fs.readFileSync(getFilePath(config.paths.referenceImages, fileName, viewport)))
-      const testImage = PNG.sync.read(fs.readFileSync(getFilePath(config.paths.testImages, fileName, viewport)))
+      const referenceImage = fs.readFileSync(getFilePath(config.paths.referenceImages, fileName, viewport))
+      const testImage = fs.readFileSync(getFilePath(config.paths.testImages, fileName, viewport))
 
-      const diff = new PNG({width: referenceImage.width, height: referenceImage.height});
+      const result = await resembleCompare(
+        referenceImage,
+        testImage,
+        {
+          ignore: "nothing",
+          scaleToSameSize: true,
+          output: {
+            largeImageThreshold: 0,
+            transparency: 0.3
+          },
+        }
+      );
 
-      const numberOfDifferentPixels = pixelmatch(referenceImage.data, testImage.data, diff.data, referenceImage.width, referenceImage.height, {threshold: config.threshold})
-
-      if (numberOfDifferentPixels > 0) {
+      if (result.rawMisMatchPercentage > config.threshold) {
         await createFolder(`${config.paths.diffImages}/${fileName}`)
-
         const diffImagePath = getFilePath(config.paths.diffImages, fileName, viewport)
-        diff.pack().pipe(fs.createWriteStream(diffImagePath));
+        fs.writeFileSync(diffImagePath, result.getBuffer())
         reject(new Error(`Images are not the same. See difference at ${diffImagePath}.`))
       } else {
         resolve()
