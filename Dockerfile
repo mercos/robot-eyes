@@ -1,6 +1,6 @@
 FROM node:10.15.3
 
-ARG ROBOT_EYES_VERSION=1.0.22
+ARG ROBOT_EYES_VERSION=1.0.23
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     libgtk-3-0 \
@@ -14,6 +14,11 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     libatspi2.0-0 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+ENV DOCKERIZE_VERSION v0.6.1
+RUN curl -Lo dockerize.tar.gz https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz \
+    && tar -C /usr/local/bin -xzvf dockerize.tar.gz \
+    && rm dockerize.tar.gz
 
 WORKDIR /usr/src
 COPY package.json .
