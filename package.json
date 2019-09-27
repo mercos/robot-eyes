@@ -30,7 +30,7 @@
     "ncp": "^2.0.0",
     "puppeteer": "^1.17.0",
     "resemblejs": "^3.2.2",
-    "rimraf": "^2.6.3",
+    "rimraf": "^3.0.0",
     "robot-eyes-report": "^1.0.9"
   },
   "devDependencies": {
