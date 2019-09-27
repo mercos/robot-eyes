@@ -1379,9 +1379,9 @@ require-main-filename@^2.0.0:
   integrity sha512-NKN5kMDylKuldxYLSUfrbo5Tuzh4hd+2E8NPPX02mZtn1VuREQToYe/ZdlJy+J3uCpfaiGF05e7B8W0iXbQHmg==
 
 resemblejs@^3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/resemblejs/-/resemblejs-3.2.2.tgz#8fe88fae23c7d156ead134bd32929f796d23adfc"
-  integrity sha512-7LzIcGyZpCjhNRiKD96ebVLIx1LTHqKoilJMdYS39InYmXF6wPcizSUxRTcttR80dOtAxKEq40dQenlhlKUofw==
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/resemblejs/-/resemblejs-3.2.3.tgz#0a25fb9823e0000775f47da9f2dbbcb7814943ca"
+  integrity sha512-Qa0arhosEMNhpml52JPOCrBg3SoLdqTUv1pTOJTYXkq7XVTYL1B+pBR0So6TljjaxAsPyFJS+LAB21SI/IU9BQ==
   dependencies:
     canvas "2.6.0"
 
