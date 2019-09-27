@@ -10,6 +10,9 @@
   "bin": {
     "robot-eyes": "index.js"
   },
+  "scripts": {
+    "test": "npx mocha ./**/*.spec.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -29,5 +32,8 @@
     "resemblejs": "^3.2.2",
     "rimraf": "^2.6.3",
     "robot-eyes-report": "^1.0.9"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0"
   }
 }
