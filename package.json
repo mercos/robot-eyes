@@ -26,10 +26,10 @@
     "crc-32": "^1.2.0",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
-    "mocha": "^6.1.4",
+    "mocha": "^6.2.1",
     "ncp": "^2.0.0",
-    "puppeteer": "^1.17.0",
-    "resemblejs": "^3.2.2",
+    "puppeteer": "^1.20.0",
+    "resemblejs": "^3.2.3",
     "rimraf": "^3.0.0",
     "robot-eyes-report": "^1.0.9"
   },
