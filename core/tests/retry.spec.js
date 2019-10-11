@@ -46,4 +46,17 @@ describe('Retry', () => {
       assert.isAtLeast(end - start, 500)
     })
   })
+
+  const attempts = 5
+  it(`Should try ${attempts} times`, async () => {
+    let attemptCount = 0
+
+    const func = () => new Promise((resolve, reject) =>  {
+      attemptCount++
+      reject(ERROR)
+    })
+
+    return retry(func, 5, DELAY)
+      .catch(e => assert.equal(attemptCount, attempts))
+  })
 })

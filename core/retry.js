@@ -16,7 +16,7 @@ const retry = (func, attempts, delay) => {
         attemptCount = attemptCount + 1
         await sleep(delay)
       }
-    } while (attemptCount < attempts && !result)
+    } while (attemptCount <= attempts && !result)
 
     result ? resolve(true) : reject(error)
   })
