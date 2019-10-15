@@ -24,7 +24,9 @@ const getConfig = () => {
     threshold: 0.01
   }, userConfig)
   Object.keys(config.paths)
-    .forEach(v => config.paths[v] = path.resolve(config.paths[v]))
+    .forEach(v => {
+      config.paths[v] = path.resolve(config.paths[v])
+    })
 
   if (args['base-url']) {
     config.baseURL = args['base-url']

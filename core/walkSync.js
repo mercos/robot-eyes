@@ -1,16 +1,16 @@
 const fs = require('fs')
 
 const walkSync = function (dir, filelist) {
-  var files = fs.readdirSync(dir);
-  filelist = filelist || [];
+  var files = fs.readdirSync(dir)
+  filelist = filelist || []
   files.forEach(function (file) {
     if (fs.statSync(dir + file).isDirectory()) {
-      filelist = walkSync(dir + file + '/', filelist);
+      filelist = walkSync(dir + file + '/', filelist)
     } else {
-      filelist.push(dir + file);
+      filelist.push(dir + file)
     }
-  });
-  return filelist;
-};
+  })
+  return filelist
+}
 
 module.exports = walkSync

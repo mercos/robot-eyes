@@ -6,9 +6,9 @@ const disableBlinkingCursor = async page => {
     input:focus {
       outline: none;
     }
-  `;
+  `
 
-  await page.addStyleTag({content: styleContent});
+  await page.addStyleTag({ content: styleContent })
 }
 
 module.exports = disableBlinkingCursor

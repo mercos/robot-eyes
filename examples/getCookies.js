@@ -16,7 +16,7 @@ module.exports = () => {
 
     try {
       const page = await browser.newPage()
-      await page.goto(`${config.baseURL}/login`, {waitUntil: 'networkidle0'})
+      await page.goto(`${config.baseURL}/login`, { waitUntil: 'networkidle0' })
       await page.type('#email', 'email@example.com')
       await page.type('#password', 'pw')
       await page.click('button[type=submit]')

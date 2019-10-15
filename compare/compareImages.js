@@ -16,14 +16,14 @@ const compareImages = (fileName, viewport) => {
         referenceImage,
         testImage,
         {
-          ignore: "nothing",
+          ignore: 'nothing',
           scaleToSameSize: true,
           output: {
             largeImageThreshold: 0,
             transparency: 0.3
-          },
+          }
         }
-      );
+      )
 
       if (result.rawMisMatchPercentage > config.threshold) {
         await createFolder(`${config.paths.diffImages}/${fileName}`)

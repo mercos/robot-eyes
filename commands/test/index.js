@@ -10,12 +10,12 @@ module.exports = (testFileName, grep) => {
       const mocha = new Mocha({
         fullTrace: true,
         grep
-      });
-      mocha.timeout(config.timeout);
+      })
+      mocha.timeout(config.timeout)
       mocha.addFile(testFileName)
       mocha.run(function (failures) {
-        failures ? reject() : resolve()
-      });
+        failures ? reject(new Error(`${failures} tests failed`)) : resolve()
+      })
     } catch (e) {
       reject(e)
     }

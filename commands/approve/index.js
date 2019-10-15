@@ -13,7 +13,7 @@ const approveAll = async (config, resolve, reject) => {
 
   ncp(testImageFolder, referenceImageFolder, (err) => {
     err ? reject(err) : resolve()
-  });
+  })
 }
 
 const approveSingleViewport = async (config, fileName, viewport, resolve, reject) => {
@@ -22,7 +22,7 @@ const approveSingleViewport = async (config, fileName, viewport, resolve, reject
   await createFolder(referenceImagePath)
   fs.copyFile(testImagePath, referenceImagePath, (err) => {
     err ? reject(err) : resolve()
-  });
+  })
 }
 
 const approveAllViewportsFromTest = async (config, fileName, resolve, reject) => {
@@ -32,7 +32,7 @@ const approveAllViewportsFromTest = async (config, fileName, resolve, reject) =>
 
   ncp(testImageFolder, referenceImageFolder, (err) => {
     err ? reject(err) : resolve()
-  });
+  })
 }
 
 const approve = (testName, viewport) => {
