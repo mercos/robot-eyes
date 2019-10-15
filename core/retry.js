@@ -1,12 +1,12 @@
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+function sleep (ms) {
+  return new Promise(resolve => setTimeout(resolve, ms))
 }
 
 const retry = (func, attempts, delay) => {
   return new Promise(async (resolve, reject) => {
-    let attemptCount = 1;
-    let result = false;
-    let error = null;
+    let attemptCount = 1
+    let result = false
+    let error = null
     do {
       try {
         await func()

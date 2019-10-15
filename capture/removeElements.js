@@ -4,9 +4,9 @@ const removeElements = async (page, removeSelectors) => {
       const selector = removeSelectors[i]
 
       await page.evaluate((sel) => {
-        const elements = document.querySelectorAll(sel);
+        const elements = document.querySelectorAll(sel)
         for (let i = 0; i < elements.length; i++) {
-          elements[i].parentNode.removeChild(elements[i]);
+          elements[i].parentNode.removeChild(elements[i])
         }
       }, selector)
     }
