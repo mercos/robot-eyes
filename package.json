@@ -11,7 +11,8 @@
     "robot-eyes": "index.js"
   },
   "scripts": {
-    "test": "npx mocha ./**/*.spec.js"
+    "test": "mocha ./**/*.spec.js",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
