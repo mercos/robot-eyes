@@ -24,8 +24,10 @@ jobs:
         run: docker login -u mercos -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       - name: Get Tag Version
         run: |
+          echo ${GITHUB_REF}
           PATTERN="refs/tags/"
           TAG="${GITHUB_REF/PATTERN/}"
+          echo ${TAG}
       - name: Build Docker Image
         run: docker build -t mercos/robot-eyes:${TAG} .
       - name: Push version to DockerHub
