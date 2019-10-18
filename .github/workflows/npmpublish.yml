@@ -1,25 +1,11 @@
-name: Node.js Package
+name: Publish Node.js Package
 
 on:
-  push:
-    branches:
-      - master
-    tags:
-      - (.*)
+  release:
+    types: [published]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - run: yarn
-      - run: yarn test
-
   publish-npm:
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -29,4 +15,18 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: yarn publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  publish-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/checkout@v1
+      - name: Login to Docker Hub
+        run: docker login -u mercos -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      - name: Build Docker Image
+        run: docker build -t mercos/robot-eyes:${GITHUB_REF} .
+      - name: Push version to DockerHub
+        run: docker push mercos/robot-eyes:${GITHUB_REF}
+      - name: Tag Docker Image to latest
+        run: docker tag mercos/robot-eyes:${GITHUB_REF} mercos/robot-eyes:latest
+      - name: Push latest to DockerHub
+        run: docker push mercos/robot-eyes:latest
