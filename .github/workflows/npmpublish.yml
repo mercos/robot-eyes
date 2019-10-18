@@ -29,7 +29,7 @@ jobs:
           TAG="${GITHUB_REF/$PATTERN/}"
           echo ${TAG}
       - name: Build Docker Image
-        run: docker build -t mercos/robot-eyes:${TAG} .
+        run: echo ${TAG} && docker build -t mercos/robot-eyes:${TAG} .
       - name: Push version to DockerHub
         run: docker push mercos/robot-eyes:${TAG}
       - name: Tag Docker Image to latest
