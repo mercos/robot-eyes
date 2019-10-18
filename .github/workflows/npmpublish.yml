@@ -15,7 +15,9 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Define tag
         run: echo ::set-env name=TAG::`git describe --tags`
-      - name: Public package to NPM
+      - name: Bump package version
+        run: npm version ${TAG}
+      - name: Publish package to NPM
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
