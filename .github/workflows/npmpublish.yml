@@ -16,7 +16,7 @@ jobs:
       - name: Define tag
         run: echo ::set-env name=TAG::`git describe --tags`
       - name: Public package to NPM
-        run: npm publish --tag ${TAG}
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
