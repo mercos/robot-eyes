@@ -1,6 +1,6 @@
 FROM node:10.15.3
 
-ARG ROBOT_EYES_VERSION=1.0.23
+ARG ROBOT_EYES_VERSION=latest
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     libgtk-3-0 \
