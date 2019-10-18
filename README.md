@@ -5,10 +5,7 @@ Visual regression testing
 ```
 npm install robot-eyes
 ```
-Or you can use our Docker image
-```
-https://hub.docker.com/r/mercos/robot-eyes
-```
+Or you can use our Docker image: https://hub.docker.com/r/mercos/robot-eyes
 
 ## Setting up
 First create `robot-eyes.json` in your project root folder. Here's a list of the available options:
