@@ -26,8 +26,7 @@ jobs:
         run: |
           echo ${GITHUB_REF}
           PATTERN="refs/tags/"
-          TAG="${GITHUB_REF/$PATTERN/}"
-          echo ${TAG}
+          export TAG="${GITHUB_REF/$PATTERN/}"
       - name: Build Docker Image
         run: echo ${TAG} && docker build -t mercos/robot-eyes:${TAG} .
       - name: Push version to DockerHub
