@@ -16,7 +16,10 @@ jobs:
       - name: Define tag
         run: echo ::set-env name=TAG::`git describe --tags`
       - name: Bump package version
-        run: npm version ${TAG}
+        run: | 
+          git config --global user.email ${{ secrets.PUBLISH_EMAIL }}
+          git config --global user.name ${{ secrets.PUBLISH_USER_NAME }}
+          npm version ${TAG}
       - name: Publish package to NPM
         run: npm publish
         env:
