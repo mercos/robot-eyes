@@ -22,11 +22,13 @@ jobs:
       - uses: actions/checkout@v1
       - name: Login to Docker Hub
         run: docker login -u mercos -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-      - name: Get Tag Version
-        run: |
-          echo ${GITHUB_REF}
-          PATTERN="refs/tags/"
-          export TAG="${GITHUB_REF/$PATTERN/}"
+      - name: Define tag
+        run: ::set-env name=TAG::`git describe --tags`
+#      - name: Get Tag Version
+#        run: |
+#          echo ${GITHUB_REF}
+#          PATTERN="refs/tags/"
+#          export TAG="${GITHUB_REF/$PATTERN/}"
       - name: Build Docker Image
         run: echo ${TAG} && docker build -t mercos/robot-eyes:${TAG} .
       - name: Push version to DockerHub
