@@ -22,11 +22,15 @@ jobs:
       - uses: actions/checkout@v1
       - name: Login to Docker Hub
         run: docker login -u mercos -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      - name: Get Tag Version
+        run: |
+          PATTERN="refs/tags/"
+          TAG="${GITHUB_REF/PATTERN/}"
       - name: Build Docker Image
-        run: docker build -t mercos/robot-eyes:${GITHUB_REF} .
+        run: docker build -t mercos/robot-eyes:${TAG} .
       - name: Push version to DockerHub
-        run: docker push mercos/robot-eyes:${GITHUB_REF}
+        run: docker push mercos/robot-eyes:${TAG}
       - name: Tag Docker Image to latest
-        run: docker tag mercos/robot-eyes:${GITHUB_REF} mercos/robot-eyes:latest
+        run: docker tag mercos/robot-eyes:${TAG} mercos/robot-eyes:latest
       - name: Push latest to DockerHub
         run: docker push mercos/robot-eyes:latest
