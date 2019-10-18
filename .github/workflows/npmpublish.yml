@@ -31,7 +31,7 @@ jobs:
       - name: Login to Docker Hub
         run: docker login -u mercos -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       - name: Build Docker Image
-        run: docker build -t mercos/robot-eyes:${TAG} .t
+        run: docker build --build-arg ROBOT_EYES_VERSION=${TAG} -t mercos/robot-eyes:${TAG} .
       - name: Push version to DockerHub
         run: docker push mercos/robot-eyes:${TAG}
       - name: Tag Docker Image to latest
