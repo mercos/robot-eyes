@@ -20,7 +20,7 @@ jobs:
           git config --global user.email ${{ secrets.PUBLISH_EMAIL }}
           git config --global user.name ${{ secrets.PUBLISH_USER_NAME }}
           npm version ${TAG}
-      - name: Push changes
+      - name: Push new version to Github
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.PUSH_TOKEN }}
@@ -28,11 +28,10 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Login to Docker Hub
         run: docker login -u mercos -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       - name: Build Docker Image
-        run: echo ${TAG} && docker build -t mercos/robot-eyes:${TAG} .
+        run: docker build -t mercos/robot-eyes:${TAG} .t
       - name: Push version to DockerHub
         run: docker push mercos/robot-eyes:${TAG}
       - name: Tag Docker Image to latest
