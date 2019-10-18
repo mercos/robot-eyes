@@ -15,8 +15,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Define tag
         run: echo ::set-env name=TAG::`git describe --tags`
-      - name: Yarn Publish
-        run: yarn publish --new-version ${TAG}
+      - name: Public package to NPM
+        run: npm publish --tag ${TAG}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
