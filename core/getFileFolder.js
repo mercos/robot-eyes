@@ -1,5 +1,3 @@
-const getFileFolder = (folderPath, fileName) => {
-  return `${folderPath}/${fileName}`
-}
+const getFileFolder = (folderPath, fileName) => `${folderPath}/${fileName}`
 
 module.exports = getFileFolder
