@@ -64,3 +64,4 @@ typings/
 report/dist/
 
 coverage.lcov
+.DS_STORE
