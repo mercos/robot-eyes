@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/brendonbarreto/robot-eyes#readme",
   "dependencies": {
-    "chalk": "^3.0.0",
+    "chalk": "^4.0.0",
     "commander": "^4.1.0",
     "crc-32": "^1.2.0",
     "minimist": "^1.2.0",
