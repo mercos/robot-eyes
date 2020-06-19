@@ -21,10 +21,9 @@ RUN curl -Lo dockerize.tar.gz https://github.com/jwilder/dockerize/releases/down
     && rm dockerize.tar.gz
 
 WORKDIR /usr/src
-COPY package.json .
-COPY yarn.lock .
+COPY ./ ./
 RUN npm install -g yarn && \
-    yarn add robot-eyes@${ROBOT_EYES_VERSION} && \
+    yarn add file:. && \
     rm -rf /usr/local/share/.cache/yarn/*
 
 ENV NODE_PATH=/usr/src/node_modules PATH=/usr/src/node_modules/.bin:${PATH}
