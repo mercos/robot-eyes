@@ -1,0 +1,34 @@
+version: '3'
+services:
+  web:
+    image: nginx
+    volumes:
+      - ./templates:/usr/share/nginx/html
+    ports:
+      - "8080:8080"
+    environment:
+      - NGINX_HOST=foobar.com
+      - NGINX_PORT=8080
+  test:
+    image: mercos/robot-eyes:1.1.0
+    working_dir: /data
+    entrypoint: []
+    command: robot-eyes test test.js --base-url=https://www.google.com
+    volumes:
+      - ./vrt:/data
+    depends_on:
+      - web
+  report:
+    image: mercos/robot-eyes:1.1.0
+    volumes:
+      - ./vrt:/data
+    working_dir: /data
+    ports:
+      - 3000:3000
+    command: report
+  approve:
+    image: mercos/robot-eyes:1.1.0
+    volumes:
+      - ./vrt:/data
+    working_dir: /data
+    command: approve
