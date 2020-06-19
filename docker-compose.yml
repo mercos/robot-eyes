@@ -13,7 +13,7 @@ services:
     build: .
     working_dir: /data
     entrypoint: []
-    command: robot-eyes test test.js --base-url=https://www.google.com
+    command: robot-eyes test test.js --base-url=http://web:8080
     volumes:
       - ./vrt:/data
     depends_on:

@@ -21,10 +21,12 @@ RUN curl -Lo dockerize.tar.gz https://github.com/jwilder/dockerize/releases/down
     && rm dockerize.tar.gz
 
 WORKDIR /usr/src
-COPY ./ ./
-RUN npm install -g yarn && \
-    yarn add file:. && \
-    rm -rf /usr/local/share/.cache/yarn/*
+RUN npm install -g yarn
+COPY package.json .
+COPY yarn.lock .
+RUN yarn
+COPY . .
+RUN yarn add file:.
 
 ENV NODE_PATH=/usr/src/node_modules PATH=/usr/src/node_modules/.bin:${PATH}
 
