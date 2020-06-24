@@ -1,24 +1,26 @@
 version: '3'
 services:
   web:
+    tty: true
     image: nginx
     volumes:
       - ./templates:/usr/share/nginx/html
     ports:
-      - "8080:8080"
-    environment:
-      - NGINX_HOST=foobar.com
-      - NGINX_PORT=8080
+      - "80:80"
+    expose:
+      - 80
   test:
+    tty: true
     build: .
     working_dir: /data
     entrypoint: []
-    command: robot-eyes test test.js --base-url=http://web:8080
+    command: robot-eyes test test.js --base-url=http://web:80
     volumes:
       - ./vrt:/data
     depends_on:
       - web
   report:
+    tty: true
     build: .
     volumes:
       - ./vrt:/data
@@ -27,6 +29,7 @@ services:
       - 3000:3000
     command: report
   approve:
+    tty: true
     build: .
     volumes:
       - ./vrt:/data
