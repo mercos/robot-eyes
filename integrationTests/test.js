@@ -1,14 +1,15 @@
-const buildTest = require('robot-eyes/buildTest')
+const robotEyesTest = require('robot-eyes/test')
 
-DEFAULT_OPTIONS = {
-    removeSelectors: ['.zEWidget-launcher', '#beamerNotifications']
-}
-const test = buildTest(DEFAULT_OPTIONS)
-
-describe('Mercos', function () {
-    it('Home', function () {
-        return test('/', this.test.title, {
-            removeSelectors: ['.containerBanner']
-        })
+describe('Templates', function () {
+  it('Visualize', function () {
+    return robotEyesTest('/templated-visualize/', this.test.title, {
+      delay: 1000
     })
+  })
+
+  it('Typify', function () {
+    return robotEyesTest('/templated-typify/', this.test.title, {
+      delay: 1000
+    })
+  })
 })
