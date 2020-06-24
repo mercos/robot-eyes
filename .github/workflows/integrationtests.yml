@@ -1,0 +1,17 @@
+name: Integration Tests
+
+on: [pull_request]
+
+jobs:
+
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Build and Run tests
+      run: |
+        docker-compose build
+        docker-compose run test

@@ -64,3 +64,7 @@ typings/
 report/dist/
 
 coverage.lcov
+
+integrationTests/images/test
+integrationTests/images/diff
+**/.DS_Store
