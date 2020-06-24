@@ -16,14 +16,14 @@ services:
     entrypoint: []
     command: robot-eyes test test.js --base-url=http://web:80
     volumes:
-      - ./vrt:/data
+      - ./integrationTests:/data
     depends_on:
       - web
   report:
     tty: true
     build: .
     volumes:
-      - ./vrt:/data
+      - ./integrationTests:/data
     working_dir: /data
     ports:
       - 3000:3000
@@ -32,6 +32,6 @@ services:
     tty: true
     build: .
     volumes:
-      - ./vrt:/data
+      - ./integrationTests:/data
     working_dir: /data
     command: approve

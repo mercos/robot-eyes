@@ -1,5 +1,4 @@
 {
-    "baseURL": "https://www.google.com",
     "viewports": [
         {
             "width": 768,
@@ -11,8 +10,8 @@
         }
     ],
     "paths": {
-        "testImages": "./imagens/teste",
-        "diffImages": "./imagens/diferenca",
-        "referenceImages": "./imagens/referencia"
+        "testImages": "./images/test",
+        "diffImages": "./images/diff",
+        "referenceImages": "./images/reference"
     }
 }
