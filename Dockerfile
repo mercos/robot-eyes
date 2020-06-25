@@ -25,7 +25,7 @@ COPY package.json .
 COPY package-lock.json .
 RUN npm install
 COPY . .
-RUN npm install .
+RUN npm link
 
 ENV NODE_PATH=/usr/src/node_modules PATH=/usr/src/node_modules/.bin:${PATH}
 
