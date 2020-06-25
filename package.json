@@ -12,8 +12,7 @@
   },
   "scripts": {
     "test": "mocha ./**/*.spec.js",
-    "lint": "eslint .",
-    "cover": "nyc --reporter=lcov npm run test && codecov"
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
