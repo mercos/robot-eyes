@@ -13,7 +13,7 @@
   "scripts": {
     "test": "mocha ./**/*.spec.js",
     "lint": "eslint .",
-    "cover": "nyc --reporter=lcov yarn test && codecov"
+    "cover": "nyc --reporter=lcov npm run test && codecov"
   },
   "keywords": [],
   "author": "",
