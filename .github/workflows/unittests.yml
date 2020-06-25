@@ -13,8 +13,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 8.x
-      - run: yarn install
-      - run: yarn cover
+      - run: npm install
+      - run: npm run cover
         env:
           CI: true
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

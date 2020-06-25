@@ -21,13 +21,12 @@ RUN curl -Lo dockerize.tar.gz https://github.com/jwilder/dockerize/releases/down
     && rm dockerize.tar.gz
 
 WORKDIR /usr/src
-RUN npm install -g yarn
 COPY package.json .
-COPY yarn.lock .
-RUN yarn
+COPY package-lock.json .
+RUN npm install
 COPY . .
-RUN yarn add file:.
+RUN npm link
 
-ENV NODE_PATH=/usr/src/node_modules PATH=/usr/src/node_modules/.bin:${PATH}
+ENV NODE_PATH=/usr/local/lib/node_modules
 
 ENTRYPOINT ["robot-eyes"]
