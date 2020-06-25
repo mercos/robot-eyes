@@ -27,6 +27,6 @@ RUN npm install
 COPY . .
 RUN npm link
 
-ENV NODE_PATH=/usr/src/node_modules PATH=/usr/src/node_modules/.bin:${PATH}
+ENV NODE_PATH=/usr/local/lib/node_modules
 
 ENTRYPOINT ["robot-eyes"]
