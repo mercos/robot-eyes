@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     commonjs: true,
     es6: true,
-    mocha: true,
+    mocha: true
   },
   extends: [
     'standard',
@@ -11,13 +11,13 @@ module.exports = {
   ],
   globals: {
     Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
+    SharedArrayBuffer: 'readonly'
   },
   parserOptions: {
     ecmaVersion: 2018
   },
   rules: {
-    'no-async-promise-executor': "off",
+    'no-async-promise-executor': 'off'
   },
-  plugins: ['mocha'],
+  plugins: ['mocha']
 }
