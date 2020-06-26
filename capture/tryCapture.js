@@ -2,8 +2,11 @@ const resizeAndPrint = require('./resizeAndPrint')
 const removeElements = require('./removeElements')
 const waitFor = require('./waitFor')
 const disableBlinkingCursor = require('./disableBlinkingCursor')
+const openBrowser = require('./openBrowser')
 
-const tryCapture = async (browser, url, testName, viewports, options, config) => {
+const tryCapture = async (url, testName, viewports, options, config) => {
+  const browser = await openBrowser()
+
   try {
     const page = await browser.newPage()
     if (options.cookies && options.cookies.length) {

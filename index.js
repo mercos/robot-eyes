@@ -21,9 +21,6 @@ program
       .catch((e) => {
         process.exitCode = 1
 
-        if (e) {
-          throw e
-        }
         if (b.report) {
           report()
         }
