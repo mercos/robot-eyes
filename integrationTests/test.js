@@ -1,7 +1,8 @@
+/* eslint-disable mocha/no-nested-tests */
 const buildTest = require('robot-eyes/buildTest')
 
-DEFAULT_OPTIONS = {
-    delay: 1000
+const DEFAULT_OPTIONS = {
+  delay: 1000
 }
 const test = buildTest(DEFAULT_OPTIONS)
 
@@ -30,5 +31,3 @@ describe('Retrospect', function () {
     return test('/templated-retrospect/generic.html', this.test.fullTitle())
   })
 })
-
-
