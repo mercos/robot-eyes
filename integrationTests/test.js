@@ -1,15 +1,33 @@
-const robotEyesTest = require('robot-eyes/test')
+/* eslint-disable mocha/no-nested-tests */
+const buildTest = require('robot-eyes/buildTest')
 
-describe('Templates', function () {
-  it('Visualize', function () {
-    return robotEyesTest('/templated-visualize/', this.test.title, {
-      delay: 1000
-    })
+const DEFAULT_OPTIONS = {
+  delay: 1000
+}
+const test = buildTest(DEFAULT_OPTIONS)
+
+describe('Visualize', function () {
+  it('Index', function () {
+    return test('/templated-visualize/', this.test.fullTitle())
+  })
+})
+
+describe('Typify', function () {
+  it('Index', function () {
+    return test('/templated-typify/', this.test.fullTitle())
+  })
+})
+
+describe('Retrospect', function () {
+  it('Index', function () {
+    return test('/templated-retrospect/', this.test.fullTitle())
   })
 
-  it('Typify', function () {
-    return robotEyesTest('/templated-typify/', this.test.title, {
-      delay: 1000
-    })
+  it('Elements', function () {
+    return test('/templated-retrospect/elements.html', this.test.fullTitle())
+  })
+
+  it('Generic', function () {
+    return test('/templated-retrospect/generic.html', this.test.fullTitle())
   })
 })
