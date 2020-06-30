@@ -1,4 +1,5 @@
 /* eslint-disable mocha/no-nested-tests */
+/* eslint-disable mocha/max-top-level-suites */
 const buildTest = require('robot-eyes/buildTest')
 
 const DEFAULT_OPTIONS = {
