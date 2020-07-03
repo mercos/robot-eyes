@@ -1,8 +1,6 @@
 const puppeteer = require('puppeteer')
-const getConfig = require('../core/getConfig')
 
-const openBrowser = () => {
-  const config = getConfig()
+const openBrowser = config => {
   return puppeteer.launch({
     headless: config.headless,
     args: [

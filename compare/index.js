@@ -3,14 +3,13 @@ const compareImages = require('./compareImages')
 const getConfig = require('../core/getConfig')
 const testNameToFileName = require('../core/testNameToFileName')
 
-const compareSingleViewport = (fileName, viewport) => {
+const compareSingleViewport = (config, fileName, viewport) => {
   return new Promise((resolve, reject) => {
-    compareHashs(fileName, viewport).then(resolve).catch((e) => {
-      const config = getConfig()
+    compareHashs(config, fileName, viewport).then(resolve).catch((e) => {
       if (config.skipDiffGeneration) {
         reject(e)
       } else {
-        compareImages(fileName, viewport).then(resolve).catch(reject)
+        compareImages(config, fileName, viewport).then(resolve).catch(reject)
       }
     })
   })
@@ -25,7 +24,7 @@ const compare = (testName) => {
 
     for (let i = 0; i < viewports.length; i++) {
       const viewport = viewports[i]
-      await compareSingleViewport(fileName, viewport).catch(e => {
+      await compareSingleViewport(config, fileName, viewport).catch(e => {
         failedViewports.push({
           viewport,
           error: e

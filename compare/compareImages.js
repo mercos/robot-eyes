@@ -1,13 +1,10 @@
 const fs = require('fs')
 const resembleCompare = require('resemblejs/compareImages')
-const getConfig = require('../core/getConfig')
 const getFilePath = require('../core/getFilePath')
 const createFolder = require('../core/createFolder')
 
-const compareImages = (fileName, viewport) => {
+const compareImages = (config, fileName, viewport) => {
   return new Promise(async (resolve, reject) => {
-    const config = getConfig()
-
     try {
       const referenceImage = fs.readFileSync(getFilePath(config.paths.referenceImages, fileName, viewport))
       const testImage = fs.readFileSync(getFilePath(config.paths.testImages, fileName, viewport))

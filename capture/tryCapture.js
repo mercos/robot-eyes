@@ -4,8 +4,8 @@ const waitFor = require('./waitFor')
 const disableBlinkingCursor = require('./disableBlinkingCursor')
 const openBrowser = require('./openBrowser')
 
-const tryCapture = async (url, testName, viewports, options, config) => {
-  const browser = await openBrowser()
+const tryCapture = async (url, testName, options, config) => {
+  const browser = await openBrowser(config)
 
   try {
     const page = await browser.newPage()
@@ -28,7 +28,7 @@ const tryCapture = async (url, testName, viewports, options, config) => {
       await options.onReady(page)
     }
 
-    await resizeAndPrint(page, viewports, testName)
+    await resizeAndPrint(page, config, testName)
     await browser.close()
   } catch (e) {
     await browser.close()
