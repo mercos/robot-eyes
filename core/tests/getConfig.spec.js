@@ -3,6 +3,10 @@ const mock = require('mock-fs')
 const getConfig = require('../getConfig')
 
 describe('getConfig', function () {
+  afterEach(function () {
+    mock.restore()
+  })
+
   it('should thrown an error if config file not found', function () {
     expect(() => getConfig()).to.throw('ENOENT')
   })
@@ -31,6 +35,7 @@ describe('getConfig', function () {
   })
 
   it('default baseURL should be replace by argv', function () {
+    createEmptyConfigFile()
     const baseURL = 'http://test.com'
     process.argv.push('--base-url', baseURL)
 

@@ -5,6 +5,10 @@ const mock = require('mock-fs')
 const cleanFolderContent = require('../cleanFolderContent')
 
 describe('cleanFolderContent', function () {
+  afterEach(function () {
+    mock.restore()
+  })
+
   it('should not thrown an error if folder do not exist', async function () {
     await cleanFolderContent('nonexistent_folder')
   })

@@ -6,11 +6,7 @@ const createFolder = fileOrFolderPath => {
   return new Promise((resolve, reject) => {
     mkdirp(dir)
       .then(() => resolve())
-      .catch((err) => {
-        if (err && err.code !== 'EEXIST') {
-          reject(err)
-        }
-      })
+      .catch((err) => reject(err))
   })
 }
 
