@@ -30,6 +30,15 @@ describe('getConfig', function () {
     expect(config.baseURL).to.equal(baseURL)
   })
 
+  it('default baseURL should be replace by argv', function () {
+    const baseURL = 'http://test.com'
+    process.argv.push('--base-url', baseURL)
+
+    const config = getConfig()
+
+    expect(config.baseURL).to.equal(baseURL)
+  })
+
   it('timeout should be 40000 by default', function () {
     createEmptyConfigFile()
 
