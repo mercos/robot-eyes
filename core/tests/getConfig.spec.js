@@ -35,6 +35,7 @@ describe('getConfig', function () {
   })
 
   it('default baseURL should be replace by argv', function () {
+    createEmptyConfigFile()
     const baseURL = 'http://test.com'
     process.argv.push('--base-url', baseURL)
 
