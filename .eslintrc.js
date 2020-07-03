@@ -17,7 +17,8 @@ module.exports = {
     ecmaVersion: 2018
   },
   rules: {
-    'no-async-promise-executor': 'off'
+    'no-async-promise-executor': 'off',
+    'no-unused-expressions': 'off'
   },
   plugins: ['mocha']
 }
