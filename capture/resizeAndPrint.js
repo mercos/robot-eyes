@@ -1,13 +1,11 @@
-const getConfig = require('../core/getConfig')
 const getFilePath = require('../core/getFilePath')
 const testNameToFileName = require('../core/testNameToFileName')
 const createFolder = require('../core/createFolder')
 
-const resizeAndPrint = async (page, viewports, testName) => {
+const resizeAndPrint = async (page, config, testName) => {
   const fileName = testNameToFileName(testName)
-  const config = getConfig()
-  for (let i = 0; i < viewports.length; i++) {
-    const viewport = viewports[i]
+  for (let i = 0; i < config.viewports.length; i++) {
+    const viewport = config.viewports[i]
     await page.setViewport({
       width: viewport.width,
       height: viewport.height
