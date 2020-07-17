@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: Build and Run tests
-      run: |
-        docker-compose build
-        docker-compose run test
+    - name: Build
+      run: docker-compose build
+    - name: Test
+      run: docker-compose run test
