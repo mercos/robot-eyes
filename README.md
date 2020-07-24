@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/robot-eyes.svg)](https://badge.fury.io/js/robot-eyes)
+
 ## robot-eyes
 Visual regression testing
 
