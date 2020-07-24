@@ -50,7 +50,7 @@ describe('compareHashs', function () {
   it('should throw an exception if hashs are not the same', function () {
     mock({
       [getFilePath(config.paths.referenceImages, fileName, viewport)]: Buffer.from([9, 8, 7]),
-      [getFilePath(config.paths.testImages, fileName, viewport)]: Buffer.from([9, 8, 7])
+      [getFilePath(config.paths.testImages, fileName, viewport)]: Buffer.from([9, 8])
     })
 
     return expect(compareHashs(config, fileName, viewport))
