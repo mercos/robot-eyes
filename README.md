@@ -1,7 +1,13 @@
 [![npm version](https://badge.fury.io/js/robot-eyes.svg)](https://badge.fury.io/js/robot-eyes)
 
-## robot-eyes
-Visual regression testing
+<p align="center">
+  <a href="https://github.com/mercos/robot-eyes"><img width="30%" src="https://i.imgur.com/rglWPiW.jpg" title="source: imgur.com" /></a>
+</p>
+
+<p align="center">
+  Simple and consistent visual regression testing
+</p>
+
 
 ## Installation
 ```
