@@ -8,6 +8,13 @@
   Simple and consistent visual regression testing
 </p>
 
+## Table of contents
+
+- [Installation](#installation)
+- [Setting up](#setting-up)
+- [Creating a test file](#creating-a-test-file)
+- [Commands](#commands)
+
 
 ## Installation
 ```
