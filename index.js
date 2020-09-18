@@ -6,6 +6,7 @@ const chalk = require('chalk')
 const test = require('./commands/test')
 const approve = require('./commands/approve')
 const report = require('./commands/report')
+const init = require('./commands/init')
 
 program
   .command('test <test-file>')
@@ -44,6 +45,22 @@ program
       .then(() => {
         process.exitCode = 0
         const message = testName ? `${testName} successfully approved` : 'Successfully approved all'
+        console.log(chalk.green(message))
+      })
+      .catch((e) => {
+        process.exitCode = 1
+        console.error(chalk.red(e))
+      })
+  })
+
+program
+  .command('init')
+  .description('Get started using robot-eyes in your project')
+  .action(function () {
+    init()
+      .then(() => {
+        process.exitCode = 0
+        const message = 'FOI'
         console.log(chalk.green(message))
       })
       .catch((e) => {
