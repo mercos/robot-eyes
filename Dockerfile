@@ -28,6 +28,5 @@ COPY . .
 RUN npm link
 
 ENV NODE_PATH=/usr/local/lib/node_modules
-WORKDIR /data
 
 ENTRYPOINT ["robot-eyes"]

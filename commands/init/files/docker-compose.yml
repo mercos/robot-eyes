@@ -14,6 +14,7 @@ services:
     image: mercos/robot-eyes:{{ version }}
     entrypoint: []
     command: robot-eyes test test.js --base-url=http://web:80
+    working_dir: /data
     volumes:
       - ./:/data
     depends_on:
@@ -21,6 +22,7 @@ services:
   report:
     tty: true
     image: mercos/robot-eyes:{{ version }}
+    working_dir: /data
     volumes:
       - ./:/data
     ports:
@@ -29,6 +31,7 @@ services:
   approve:
     tty: true
     image: mercos/robot-eyes:{{ version }}
+    working_dir: /data
     volumes:
       - ./:/data
     command: approve
