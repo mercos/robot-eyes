@@ -9,10 +9,4 @@ describe('robot-eyes', function () {
   it('Home', function () {
     return robotEyes('/', this.test.title)
   })
-
-  it('Contact', function () {
-    return robotEyes('/contact', this.test.title, {
-      removeSelectors: '.container-time'
-    })
-  })
 })

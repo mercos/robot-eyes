@@ -4,7 +4,7 @@ services:
     tty: true
     image: nginx
     volumes:
-      - ./templates:/usr/share/nginx/html
+      - ./example-app:/usr/share/nginx/html
     ports:
       - "80:80"
     expose:
@@ -12,7 +12,6 @@ services:
   test:
     tty: true
     image: mercos/robot-eyes:{{ version }}
-    working_dir: /data
     entrypoint: []
     command: robot-eyes test test.js --base-url=http://web:80
     volumes:
@@ -24,7 +23,6 @@ services:
     image: mercos/robot-eyes:{{ version }}
     volumes:
       - ./:/data
-    working_dir: /data
     ports:
       - 3000:3000
     command: report
@@ -33,5 +31,4 @@ services:
     image: mercos/robot-eyes:{{ version }}
     volumes:
       - ./:/data
-    working_dir: /data
     command: approve
