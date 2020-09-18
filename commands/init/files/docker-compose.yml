@@ -4,7 +4,7 @@ services:
     tty: true
     image: nginx
     volumes:
-      - ./example-app:/usr/share/nginx/html
+      - ./example-app/:/usr/share/nginx/html
     ports:
       - "80:80"
     expose:
