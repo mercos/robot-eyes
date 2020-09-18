@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const mkdirp = require('mkdirp')
+const { ncp } = require('ncp')
 const { renderTemplateFile } = require('template-file')
 const { version } = require('../../package.json')
 
@@ -16,4 +17,5 @@ module.exports = async () => {
   fs.writeFileSync(`${MAIN_FOLDER}/docker-compose.yml`, dockerComposeFile)
   fs.copyFileSync('./commands/init/files/robot-eyes.json', `${MAIN_FOLDER}/robot-eyes.json`)
   fs.copyFileSync('./commands/init/files/test.js', `${MAIN_FOLDER}/test.js`)
+  ncp('./commands/init/files/example-app', `${MAIN_FOLDER}/example-app`)
 }
