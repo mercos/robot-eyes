@@ -9,4 +9,10 @@ describe('robot-eyes', function () {
   it('Home', function () {
     return robotEyes('/', this.test.title)
   })
+
+  it('Contact', function () {
+    return robotEyes('/contact.html', this.test.title, {
+      delay: 500
+    })
+  })
 })
