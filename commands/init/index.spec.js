@@ -1,53 +1,63 @@
 const chai = require('chai')
 const expect = chai.expect
+const fs = require('fs')
+const path = require('path')
+const rimraf = require('rimraf')
 const mock = require('mock-fs')
 const init = require('./index')
+const { version } = require('../../package.json')
 chai.use(require('chai-as-promised'))
+
+const MAIN_FOLDER = './robot-eyes'
 
 describe('init command', function () {
   afterEach(function () {
     mock.restore()
+
+    return new Promise((resolve, reject) => {
+      rimraf('./robot-eyes', {}, err => {
+        err ? reject(err) : resolve()
+      })
+    })
   })
 
   it('should throw an exception if reference file not found', function () {
     mock({
-      '/robot-eyes': {}
+      './robot-eyes': {}
     })
 
     return expect(init())
-      .to.eventually.be.rejected
-      .and.be.an.instanceOf(Error)
-      .and.have.property('code', 'ENOENT')
+      .to.eventually.be.rejectedWith(`Path ${path.resolve('./robot-eyes')} already exists`)
   })
 
-  // it('should throw an exception if test file not found', function () {
-  //   mock({
-  //     [getFilePath(config.paths.referenceImages, fileName, viewport)]: Buffer.from([])
-  //   })
-  //
-  //   return expect(compareHashs(config, fileName, viewport))
-  //     .to.eventually.be.rejected
-  //     .and.be.an.instanceOf(Error)
-  //     .and.have.property('code', 'ENOENT')
-  // })
-  //
-  // it('should resolve if hashs are the same', function () {
-  //   mock({
-  //     [getFilePath(config.paths.referenceImages, fileName, viewport)]: Buffer.from([9, 8, 7]),
-  //     [getFilePath(config.paths.testImages, fileName, viewport)]: Buffer.from([9, 8, 7])
-  //   })
-  //
-  //   return expect(compareHashs(config, fileName, viewport))
-  //     .to.eventually.be.fulfilled
-  // })
-  //
-  // it('should throw an exception if hashs are not the same', function () {
-  //   mock({
-  //     [getFilePath(config.paths.referenceImages, fileName, viewport)]: Buffer.from([9, 8, 7]),
-  //     [getFilePath(config.paths.testImages, fileName, viewport)]: Buffer.from([9, 8])
-  //   })
-  //
-  //   return expect(compareHashs(config, fileName, viewport))
-  //     .to.eventually.be.rejectedWith('Image\'s hashs are not the same')
-  // })
+  it('should create docker-compose.yml', async function () {
+    await init()
+
+    expect(fs.existsSync(`${MAIN_FOLDER}/docker-compose.yml`)).to.be.true
+  })
+
+  it('docker-compose.yml should replace current version', async function () {
+    await init()
+
+    const dockerCompose = fs.readFileSync(`${MAIN_FOLDER}/docker-compose.yml`, 'utf8')
+    expect(dockerCompose).to.include(`mercos/robot-eyes:${version}`)
+  })
+
+  it('should create robot-eyes.json', async function () {
+    await init()
+
+    expect(fs.existsSync(`${MAIN_FOLDER}/robot-eyes.json`)).to.be.true
+  })
+
+  it('should create test.js', async function () {
+    await init()
+
+    expect(fs.existsSync(`${MAIN_FOLDER}/test.js`)).to.be.true
+  })
+
+  it('should create example-app', async function () {
+    await init()
+
+    expect(fs.existsSync(`${MAIN_FOLDER}/example-app/`)).to.be.true
+  })
 })

@@ -7,6 +7,14 @@ const { version } = require('../../package.json')
 
 const MAIN_FOLDER = './robot-eyes'
 
+const copyExampleApp = () => {
+  return new Promise((resolve, reject) => {
+    ncp('./commands/init/files/example-app', `${MAIN_FOLDER}/example-app`, err => {
+      err ? reject(err) : resolve()
+    })
+  })
+}
+
 module.exports = async () => {
   if (fs.existsSync(MAIN_FOLDER)) {
     throw new Error(`Path ${path.resolve(MAIN_FOLDER)} already exists`)
@@ -17,5 +25,5 @@ module.exports = async () => {
   fs.writeFileSync(`${MAIN_FOLDER}/docker-compose.yml`, dockerComposeFile)
   fs.copyFileSync('./commands/init/files/robot-eyes.json', `${MAIN_FOLDER}/robot-eyes.json`)
   fs.copyFileSync('./commands/init/files/test.js', `${MAIN_FOLDER}/test.js`)
-  ncp('./commands/init/files/example-app', `${MAIN_FOLDER}/example-app`)
+  await copyExampleApp()
 }
