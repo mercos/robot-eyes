@@ -117,9 +117,9 @@ describe('getConfig', function () {
 
     const config = getConfig()
 
-    compareResolvedAndUnresolvedPath(config.paths.testImages, './robot_eyes/test_images')
-    compareResolvedAndUnresolvedPath(config.paths.diffImages, './robot_eyes/diff_images')
-    compareResolvedAndUnresolvedPath(config.paths.referenceImages, './robot_eyes/reference_images')
+    compareResolvedAndUnresolvedPath(config.paths.testImages, './images/test_images')
+    compareResolvedAndUnresolvedPath(config.paths.diffImages, './images/diff_images')
+    compareResolvedAndUnresolvedPath(config.paths.referenceImages, './images/reference_images')
   })
 
   it('default paths should be replace by config file', function () {

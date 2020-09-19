@@ -9,9 +9,9 @@ const getConfig = () => {
   const config = Object.assign({
     baseURL: null,
     paths: {
-      testImages: './robot_eyes/test_images',
-      diffImages: './robot_eyes/diff_images',
-      referenceImages: './robot_eyes/reference_images'
+      testImages: './images/test_images',
+      diffImages: './images/diff_images',
+      referenceImages: './images/reference_images'
     },
     viewports: [
       {
