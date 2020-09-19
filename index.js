@@ -60,8 +60,7 @@ program
     init()
       .then(() => {
         process.exitCode = 0
-        const message = 'FOI'
-        console.log(chalk.green(message))
+        console.log(chalk.green('Alright, you are ready to go!'))
       })
       .catch((e) => {
         process.exitCode = 1
