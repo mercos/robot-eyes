@@ -12,8 +12,7 @@ services:
   test:
     tty: true
     image: mercos/robot-eyes:{{ version }}
-    entrypoint: []
-    command: robot-eyes test test.js --base-url=http://web:80
+    entrypoint: ['robot-eyes', 'test', 'test.js', '--base-url=http://web:80']
     working_dir: /data
     volumes:
       - ./:/data
@@ -27,11 +26,11 @@ services:
       - ./:/data
     ports:
       - 3000:3000
-    command: report
+    entrypoint: ['robot-eyes', 'report']
   approve:
     tty: true
     image: mercos/robot-eyes:{{ version }}
     working_dir: /data
     volumes:
       - ./:/data
-    command: approve
+    entrypoint: ['robot-eyes', 'approve']
