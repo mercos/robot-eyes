@@ -75,6 +75,16 @@ To correct tests when they break, we need to analyze the differences and see if 
 docker-compose up report
 ```
 
+Then go to `http://localhost:3000/` and you will be able to see the report page.
+![](https://i.imgur.com/0tinrQy.png)
+
+Now just use the tools in the report, and if everything is right (in this case a difference similar to the one in the image above should appear), just approve. You should see a message like that in the terminal.
+```bash
+Approved home 1920x1080
+```
+
+If everything went well so far, now let's talk about **how to test your application**.
+
 ## Setting up
 First create `robot-eyes.json` in your project root folder. Here's a list of the available options:
 
