@@ -15,4 +15,14 @@ describe('robot-eyes', function () {
       delay: 500
     })
   })
+
+  it('About', function () {
+    return robotEyes('/about.html', this.test.title, {
+      onReady: async page => {
+        await page.evaluate(() => {
+          document.getElementsByTagName('img')[0].style.transform = 'rotate(-180deg)'
+        })
+      }
+    })
+  })
 })
