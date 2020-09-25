@@ -4,34 +4,34 @@ services:
     tty: true
     image: nginx
     volumes:
-      - ./templates:/usr/share/nginx/html
+      - ./example_app/:/usr/share/nginx/html
     ports:
       - "80:80"
     expose:
       - 80
   test:
     tty: true
-    build: .
+    image: mercos/robot-eyes:{{ version }}
     entrypoint: []
     command: robot-eyes test test.js --base-url=http://web:80
     working_dir: /data
     volumes:
-      - ./integrationTests:/data
+      - ./:/data
     depends_on:
       - web
   report:
     tty: true
-    build: .
+    image: mercos/robot-eyes:{{ version }}
     working_dir: /data
     volumes:
-      - ./integrationTests:/data
+      - ./:/data
     ports:
       - 3000:3000
     command: report
   approve:
     tty: true
-    build: .
+    image: mercos/robot-eyes:{{ version }}
     working_dir: /data
     volumes:
-      - ./integrationTests:/data
+      - ./:/data
     command: approve

@@ -1,6 +1,6 @@
 {
   "name": "robot-eyes",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Visual regression testing",
   "main": "index.js",
   "repository": {
@@ -32,7 +32,8 @@
     "puppeteer": "^5.0.0",
     "resemblejs": "^3.2.3",
     "rimraf": "^3.0.0",
-    "robot-eyes-report": "^1.0.9"
+    "robot-eyes-report": "^1.0.9",
+    "template-file": "^3.1.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
