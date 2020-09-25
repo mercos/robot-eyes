@@ -55,9 +55,15 @@ describe('init command', function () {
     expect(fs.existsSync(`${MAIN_FOLDER}/test.js`)).to.be.true
   })
 
-  it('should create example-app', async function () {
+  it('should create example_app', async function () {
     await init()
 
-    expect(fs.existsSync(`${MAIN_FOLDER}/example-app/`)).to.be.true
+    expect(fs.existsSync(`${MAIN_FOLDER}/example_app/`)).to.be.true
+  })
+
+  it('should create images folder', async function () {
+    await init()
+
+    expect(fs.existsSync(`${MAIN_FOLDER}/images/`)).to.be.true
   })
 })
