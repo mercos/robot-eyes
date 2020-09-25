@@ -23,13 +23,57 @@ Everything revolves around 3 simple commands:
 - [Creating a test file](#creating-a-test-file)
 - [Commands](#commands)
 
-robot-eyes is 
-
 ## Getting started
+Run this command in your project's root directory. 
+```bash
+docker run -v $(pwd):/data -w="/data" -it mercos/robot-eyes init
 ```
-npm install robot-eyes
+I know, the command is a bit verbose, but it does the job. After that, you will probably see a message like this: `Alright, you are ready to go!`. If this is the case, this folder structure must be present in your project:
+
 ```
-Or you can use our Docker image: https://hub.docker.com/r/mercos/robot-eyes
+.
+├── robot-eyes
+│   ├── docker-compose.yml
+│   ├── example_app
+│   │   ├── contact.html
+│   │   ├── index.html
+│   │   └── robot-eyes.jpg
+│   ├── images
+│   │   └── reference_images
+│   │       ├── contact
+│   │       │   └── contact1920x1080.png
+│   │       └── home
+│   │           └── home1920x1080.png
+│   ├── robot-eyes.json
+└── └── test.js
+```
+
+**The next commands must be executed inside the `robot-eyes` folder**. The init command that we executed, created a specific docker-compose.yml file for robot-eyes. This file has the 3 commands you will need. Let's start by running the `test`.
+```bash
+docker-compose run test
+```
+
+That's OK, we expect one to fail. We did this on purpose so that you learn to use the second command, the `report`.
+
+```bash
+robot-eyes
+    1) Home
+    ✓ Contact (1045ms)
+
+
+  1 passing (2s)
+  1 failing
+
+  1) robot-eyes
+       Home:
+     Error: 1920x1080: Images are not the same. See difference at /data/images/diff_images/home/home1920x1080.png.
+      at Promise (/usr/src/compare/index.js:38:14)
+```
+
+To correct tests when they break, we need to analyze the differences and see if they are expected or not. The best way to do this is to run the `report` command.
+```bash
+docker-compose up report
+```
 
 ## Setting up
 First create `robot-eyes.json` in your project root folder. Here's a list of the available options:
