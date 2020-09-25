@@ -111,37 +111,38 @@ And if everything went well so far, your tests should pass when you execute `doc
 Now let's talk about **how to test your application!**.
 
 ## Setting up
-First create `robot-eyes.json` in your project root folder. Here's a list of the available options:
+After going through all the steps of the getting started section, you are able to configure robot-eyes to your needs. `robot-eyes.json` is the file that contains the general settings, which are valid for all tests. Here's a list of the available options:
 
-| Property        | Description
-| ------------- |-------------|
-| `baseURL`      | Link to the main page of your application (shouldn't contain '/'). Example: https://github.com |
-| `paths.testImages`      | relative path where temporary test image files will be saved. Example './test_images/'      |
-| `paths.diffImages` | relative path where temporary diff image files will be saved. Example './diff_images/'      |
-| `paths.referenceImages` | relative path where the baseline/reference images will be saved. Example './reference_images/'      |
-| `viewports` | Array of objects containing the width and height that will be tested      |
-| `timeout` | Mocha timeout      |
-| `headless` | Chrome browsing mode. Is important to know that, headless and headed generate different images.      |
-| `threshold` | Maximum percentage of different pixels for the test to pass     |
+| Property        | Description | Default value
+| ------------- |-------------| -------------|
+| `baseURL`      | Link to the main page of your application (shouldn't contain '/'). Example: https://github.com | null |
+| `paths.testImages`      | relative path where temporary test image files will be saved. Example './test_images/'      | './images/test_images' |
+| `paths.diffImages` | relative path where temporary diff image files will be saved. Example './diff_images/'      | './images/diff_images' |
+| `paths.referenceImages` | relative path where the baseline/reference images will be saved. Example './reference_images/'     | './images/reference_images' |
+| `viewports` | Array of objects containing the width and height that will be tested      | `{width: 1920, height: 1080}` |
+| `timeout` | Mocha timeout      | 40000 |
+| `headless` | Chrome browsing mode. Is important to know that, headless and headed generate different images.      | true |
+| `threshold` | Maximum percentage of different pixels for the test to pass     | 0.01 |
 
-### Default values
+### Example file
 ```javascript
 {
-   baseURL: null,
-   paths: {
-      testImages: './robot_eyes/test_images',
-      diffImages: './robot_eyes/diff_images',
-      referenceImages: './robot_eyes/reference_images'
-   },
-   viewports: [
+   "baseURL": "https://github.com/mercos/robot-eyes",
+   "paths": {
+       "testImages": "./test_images"
+   }
+   "viewports": [
    {
       width: 1920,
       height: 1080
+   },
+   {
+      width: 1366,
+      height: 768
    }
    ],
-   timeout: 40000,
-   headless: true,
-   threshold: 0.01
+   timeout: 30000,
+   threshold: 0.02
 }
 ```
 
