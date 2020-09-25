@@ -146,6 +146,13 @@ After going through all the steps of the getting started section, you are able t
 }
 ```
 
+### Configure your server
+The `docker-compose-yml` file comes practically ready, but it lacks the main feature. The default file comes with a simple example of a server using the nginx image, but how you will run your server is up to you.
+
+We suggest that you run your application through the docker too, but if not, here is a tip:
+
+**Connect robot-eyes with the application that is running locally:** in `docker-compose.yml`, maybe change `--base-url=http://web:80` with `--base-url=host.internal.docker:YOUR_PORT` can work.
+
 ## Create your tests
 Currently we support only mocha. We recommend that you edit the `test.js` file that is created by the` init` command.
 
