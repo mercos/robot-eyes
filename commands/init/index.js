@@ -6,12 +6,11 @@ const { renderTemplateFile } = require('template-file')
 const { version } = require('../../package.json')
 
 const MAIN_FOLDER = './robot-eyes'
+const FILES_FOLDER = './commands/init/files'
 
-const copyExampleApp = () => {
+const copyFolder = (origin, destination) => {
   return new Promise((resolve, reject) => {
-    ncp('./commands/init/files/example-app', `${MAIN_FOLDER}/example-app`, err => {
-      err ? reject(err) : resolve()
-    })
+    ncp(origin, destination, err => { err ? reject(err) : resolve() })
   })
 }
 
@@ -21,9 +20,10 @@ module.exports = async () => {
   }
 
   await mkdirp(MAIN_FOLDER)
-  const dockerComposeFile = await renderTemplateFile('./commands/init/files/docker-compose.yml', { version })
+  const dockerComposeFile = await renderTemplateFile(`${FILES_FOLDER}/docker-compose.yml`, { version })
   fs.writeFileSync(`${MAIN_FOLDER}/docker-compose.yml`, dockerComposeFile)
-  fs.copyFileSync('./commands/init/files/robot-eyes.json', `${MAIN_FOLDER}/robot-eyes.json`)
-  fs.copyFileSync('./commands/init/files/test.js', `${MAIN_FOLDER}/test.js`)
-  await copyExampleApp()
+  fs.copyFileSync(`${FILES_FOLDER}/robot-eyes.json`, `${MAIN_FOLDER}/robot-eyes.json`)
+  fs.copyFileSync(`${FILES_FOLDER}/test.js`, `${MAIN_FOLDER}/test.js`)
+  await copyFolder(`${FILES_FOLDER}/example_app`, `${MAIN_FOLDER}/example_app`)
+  await copyFolder(`${FILES_FOLDER}/images`, `${MAIN_FOLDER}/images`)
 }
