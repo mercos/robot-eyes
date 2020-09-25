@@ -11,8 +11,11 @@
 robot-eyes is a **CI based** library for visual regression testing. It works best with docker, since a page renders differently on linux and mac for example. Rest assured that you don't need to know much about the docker to make it work.
 
 Everything revolves around 3 simple commands:
+
 **test:** compares the current layout with the previous one.
+
 **report:** shows the differences that were found, in an interactive way.
+
 **approve:** when there is still no reference image, this is the way to approve the current layout.
 
 ## Table of contents
