@@ -35,6 +35,7 @@ I know, the command is a bit verbose, but it does the job. After that, you will 
 ├── robot-eyes
 │   ├── docker-compose.yml
 │   ├── example_app
+│   │   ├── about.html
 │   │   ├── contact.html
 │   │   ├── index.html
 │   │   └── robot-eyes.jpg
@@ -53,21 +54,28 @@ I know, the command is a bit verbose, but it does the job. After that, you will 
 docker-compose run test
 ```
 
-That's OK, we expect one to fail. We did this on purpose so that you learn to use the second command, the `report`.
+That's OK, we expect some to fail. We did this on purpose so that you learn to use the second command, the `report`.
 
 ```bash
 robot-eyes
     1) Home
-    ✓ Contact (1045ms)
+    ✓ Contact (1146ms)
+    2) About
 
 
-  1 passing (2s)
-  1 failing
+  1 passing (3s)
+  2 failing
 
   1) robot-eyes
        Home:
      Error: 1920x1080: Images are not the same. See difference at /data/images/diff_images/home/home1920x1080.png.
       at Promise (/usr/src/compare/index.js:38:14)
+
+  2) robot-eyes
+       About:
+     Error: 1920x1080: ENOENT: no such file or directory, open '/data/images/reference_images/about/about1920x1080.png'
+      at Promise (/usr/src/compare/index.js:38:14)
+
 ```
 
 To correct tests when they break, we need to analyze the differences and see if they are expected or not. The best way to do this is to run the `report` command.
@@ -83,7 +91,24 @@ Now just use the tools in the report, and if everything is right (in this case a
 Approved home 1920x1080
 ```
 
-If everything went well so far, now let's talk about **how to test your application**.
+If you run `docker-compose run test` again, there still one error left. When you do your tests, the first time you run it, as it doesn't have a reference image yet, the report will not work for this test. There comes the last command, the `approve`. It is useful in this case, and also when you want to approve an image without seeing the report. So run this:
+```bash
+docker-compose run approve
+```
+
+And if everything went well so far, your tests should pass when you execute `docker-compose run test`
+```bash
+  robot-eyes
+    ✓ Home (711ms)
+    ✓ Contact (1124ms)
+    ✓ About (610ms)
+
+
+  3 passing (2s)
+
+```
+
+Now let's talk about **how to test your application!**.
 
 ## Setting up
 First create `robot-eyes.json` in your project root folder. Here's a list of the available options:
