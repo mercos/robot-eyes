@@ -26,9 +26,9 @@ Everything revolves around 3 simple commands:
 ## Getting started
 Run this command in your project's root directory. 
 ```bash
-docker run -v $(pwd):/data -w="/data" -it mercos/robot-eyes init
+npx robot-eyes init
 ```
-I know, the command is a bit verbose, but it does the job. After that, you will probably see a message like this: `Alright, you are ready to go!`. If this is the case, this folder structure must be present in your project:
+After that, you will probably see a message like this: `Alright, you are ready to go!`. If this is the case, this folder structure must be present in your project:
 
 ```
 .
