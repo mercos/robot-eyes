@@ -11,7 +11,7 @@ const resizeAndPrint = async (page, config, testName) => {
       height: viewport.height
     })
 
-    await page.waitFor(200)
+    await page.waitForTimeout(200)
 
     await createFolder(`${config.paths.testImages}/${fileName}`)
     const filePath = getFilePath(config.paths.testImages, fileName, viewport)
