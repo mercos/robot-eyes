@@ -1,6 +1,5 @@
 const resizeAndPrint = require('./resizeAndPrint')
 const removeElements = require('./removeElements')
-const waitFor = require('./waitFor')
 const disableBlinkingCursor = require('./disableBlinkingCursor')
 const openBrowser = require('./openBrowser')
 
@@ -18,7 +17,7 @@ const tryCapture = async (url, testName, options, config) => {
     await page.goto(fullUrl)
 
     if (options.delay) {
-      await waitFor(page, [options.delay])
+      await page.waitForTimeout(options.delay)
     }
 
     await removeElements(page, options.removeSelectors)

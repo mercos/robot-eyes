@@ -195,8 +195,8 @@ If you need help, here's an example of getting cookies with puppeteer: https://g
 ```js
 onReady: async page => {
    await page.click('.btn-open-modal')
-   await page.waitFor('.modal.in')
-   await page.waitFor(150)
+   await page.waitForSelector('.modal.in')
+   await page.waitForTimeout(150)
 }
 ```
 
