@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const mkdirp = require('mkdirp')
 const { ncp } = require('ncp')
-const { renderTemplateFile } = require('template-file')
+const { renderFile } = require('template-file')
 const { version } = require('../../package.json')
 
 const MAIN_FOLDER = './robot-eyes'
@@ -20,7 +20,7 @@ module.exports = async () => {
   }
 
   await mkdirp(MAIN_FOLDER)
-  const dockerComposeFile = await renderTemplateFile(`${FILES_FOLDER}/docker-compose.yml`, { version })
+  const dockerComposeFile = await renderFile(`${FILES_FOLDER}/docker-compose.yml`, { version })
   fs.writeFileSync(`${MAIN_FOLDER}/docker-compose.yml`, dockerComposeFile)
   fs.copyFileSync(`${FILES_FOLDER}/robot-eyes.json`, `${MAIN_FOLDER}/robot-eyes.json`)
   fs.copyFileSync(`${FILES_FOLDER}/test.js`, `${MAIN_FOLDER}/test.js`)
