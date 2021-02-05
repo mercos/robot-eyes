@@ -6,7 +6,7 @@ const { renderTemplateFile } = require('template-file')
 const { version } = require('../../package.json')
 
 const MAIN_FOLDER = './robot-eyes'
-const FILES_FOLDER = `${__dirname}/files`
+const FILES_FOLDER = path.join(__dirname, 'files')
 
 const copyFolder = (origin, destination) => {
   return new Promise((resolve, reject) => {
