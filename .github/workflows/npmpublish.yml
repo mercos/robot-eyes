@@ -19,7 +19,7 @@ jobs:
         run: | 
           git config --global user.email ${{ secrets.PUBLISH_EMAIL }}
           git config --global user.name ${{ secrets.PUBLISH_USER_NAME }}
-          npm version ${env.tag}
+          npm version ${{ env.tag }}
       - name: Push new version to Github
         uses: ad-m/github-push-action@master
         with:
@@ -31,10 +31,10 @@ jobs:
       - name: Login to Docker Hub
         run: docker login -u mercos -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       - name: Build Docker Image
-        run: docker build --build-arg ROBOT_EYES_VERSION=${env.tag} -t mercos/robot-eyes:${env.tag} .
+        run: docker build --build-arg ROBOT_EYES_VERSION=${{ env.tag }} -t mercos/robot-eyes:${{ env.tag }} .
       - name: Push version to DockerHub
-        run: docker push mercos/robot-eyes:${env.tag}
+        run: docker push mercos/robot-eyes:${{ env.tag }}
       - name: Tag Docker Image to latest
-        run: docker tag mercos/robot-eyes:${env.tag} mercos/robot-eyes:latest
+        run: docker tag mercos/robot-eyes:${{ env.tag }} mercos/robot-eyes:latest
       - name: Push latest to DockerHub
         run: docker push mercos/robot-eyes:latest
