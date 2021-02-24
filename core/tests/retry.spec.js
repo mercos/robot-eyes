@@ -42,7 +42,7 @@ describe('Retry', function () {
     const func = () => new Promise((resolve, reject) => reject(ERROR))
 
     return retry(func, 2, 500).catch(e => {
-      var end = new Date()
+      const end = new Date()
       assert.isAtLeast(end - start, 500)
     })
   })
