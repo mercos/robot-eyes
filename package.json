@@ -29,7 +29,7 @@
     "mkdirp": "1.0.4",
     "mocha": "8.0.1",
     "ncp": "2.0.0",
-    "puppeteer": "5.5.0",
+    "puppeteer": "8.0.0",
     "resemblejs": "3.2.3",
     "rimraf": "3.0.0",
     "robot-eyes-report": "1.0.9",
