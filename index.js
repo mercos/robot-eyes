@@ -21,6 +21,7 @@ program
       })
       .catch((e) => {
         process.exitCode = 1
+          console.error(chalk.red(e.message))
 
         if (b.report) {
           report()
