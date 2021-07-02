@@ -34,8 +34,7 @@
     "resemblejs": "3.2.3",
     "rimraf": "3.0.0",
     "robot-eyes-report": "1.0.9",
-    "template-file": "5.1.0",
-    "wait-on": "5.3.0"
+    "template-file": "5.1.0"
   },
   "devDependencies": {
     "chai": "4.2.0",
