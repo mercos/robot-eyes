@@ -21,7 +21,8 @@ const getConfig = () => {
     ],
     timeout: 40000,
     headless: true,
-    threshold: 0.01
+    threshold: 0.01,
+    waitForResourceTimeout: 60000
   }, userConfig)
   Object.keys(config.paths)
     .forEach(v => {

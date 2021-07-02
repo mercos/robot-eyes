@@ -123,6 +123,7 @@ After going through all the steps of the getting started section, you are able t
 | `timeout` | Mocha timeout      | 40000 |
 | `headless` | Chrome browsing mode. Is important to know that, headless and headed generate different images.      | true |
 | `threshold` | Maximum percentage of different pixels for the test to pass     | 0.01 |
+| `waitForResourceTimeout` | Maximum time (in ms) to wait for baseURL to be available     | 60000 |
 
 ### Example robot-eyes.json file
 ```javascript
