@@ -20,7 +20,7 @@ const retry = (func, { attempts, delay, timeout, onFailedAttempt }) => {
       } catch (e) {
         error = e
         attemptCount = attemptCount + 1
-        onFailedAttempt && onFailedAttempt(e)
+        onFailedAttempt && onFailedAttempt(e, attemptCount, delay * attemptCount)
         await sleep(delay)
       }
     } while (attemptCount <= attempts && !result)

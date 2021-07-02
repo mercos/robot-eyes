@@ -13,7 +13,7 @@ const waitForResource = url => {
 
   return retry(() => fetch(url), {
     timeout: ONE_MINUTE_IN_MILLISECONDS,
-    onFailedAttempt: e => console.error(chalk.red(e))
+    onFailedAttempt: (e, currentAttempt, elapsedMs) => console.log(`Attempt ${currentAttempt} in ${elapsedMs / 1000}s: ${chalk.yellow(e.message)}`)
   })
 }
 
