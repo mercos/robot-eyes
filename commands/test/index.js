@@ -6,11 +6,13 @@ const cleanTestFiles = require('./cleanTestFiles')
 const getConfig = require('../../core/getConfig')
 const retry = require('../../core/retry')
 
+const ONE_MINUTE_IN_MILLISECONDS = 60000
+
 const waitForResource = url => {
   if (!url) return Promise.resolve()
 
   return retry(() => fetch(url), {
-    timeout: 5000,
+    timeout: ONE_MINUTE_IN_MILLISECONDS,
     onFailedAttempt: e => console.error(chalk.red(e))
   })
 }
