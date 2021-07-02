@@ -1,25 +1,27 @@
 const Mocha = require('mocha')
-const waitOn = require('wait-on')
+const fetch = require('node-fetch')
+const chalk = require('chalk')
+
 const cleanTestFiles = require('./cleanTestFiles')
 const getConfig = require('../../core/getConfig')
+const retry = require('../../core/retry')
 
-const waitForResource = (config) => {
-  return waitOn({
-    interval: 1000,
-    timeout: 60000,
-    resources: [
-      config.baseURL
-    ]
+const waitForResource = url => {
+  if (!url) return Promise.resolve()
+
+  return retry(() => fetch(url), {
+    timeout: 5000,
+    onFailedAttempt: e => console.error(chalk.red(e))
   })
 }
 
 module.exports = (testFileName, grep) => {
   return new Promise((resolve, reject) => {
-    try {
-      const config = getConfig()
+    const config = getConfig()
 
-      waitForResource(config)
-        .then(function () {
+    waitForResource(config.baseURL)
+      .then(() => {
+        try {
           cleanTestFiles()
           const mocha = new Mocha({
             fullTrace: true,
@@ -30,12 +32,12 @@ module.exports = (testFileName, grep) => {
           mocha.run(function (failures) {
             failures ? reject(new Error(`${failures} tests failed`)) : resolve()
           })
-        })
-        .catch(function (err) {
-          reject(err)
-        })
-    } catch (e) {
-      reject(e)
-    }
+        } catch (e) {
+          reject(e)
+        }
+      })
+      .catch(e => {
+        reject(e)
+      })
   })
 }
