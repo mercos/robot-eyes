@@ -23,6 +23,7 @@ RUN curl -Lo dockerize.tar.gz https://github.com/jwilder/dockerize/releases/down
 WORKDIR /usr/src
 COPY package.json .
 COPY package-lock.json .
+RUN npm install -g npm@latest
 RUN npm install
 COPY . .
 RUN npm link
