@@ -6,7 +6,6 @@ module.exports = {
     mocha: true
   },
   extends: [
-    'standard',
     'plugin:mocha/recommended'
   ],
   globals: {
