@@ -1,4 +1,4 @@
-FROM node:10.18.1
+FROM node:16.13.0
 
 ARG ROBOT_EYES_VERSION=latest
 
