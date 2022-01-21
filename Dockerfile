@@ -2,7 +2,19 @@ FROM node:16.13.0-alpine
 
 ARG ROBOT_EYES_VERSION=latest
 
-RUN apk add --no-cache build-base chromium curl python3 pixman-dev cairo-dev pango-dev
+RUN apk add --no-cache \
+    build-base \
+    ca-certificates \
+    cairo-dev \
+    chromium \
+    curl \
+    freetype \
+    harfbuzz \
+    nss \
+    pango-dev \
+    pixman-dev \
+    python3 \
+    ttf-freefont
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
