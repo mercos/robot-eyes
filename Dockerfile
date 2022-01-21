@@ -9,7 +9,6 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     libasound2 \
     libatk-bridge2.0-0 \
     libatk1.0-0 \
-    libatspi2.0-0 && \
     libc6 \
     libcairo2 \
     libcups2 \
@@ -40,7 +39,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     libxtst6 \
     lsb-release \
     wget \
-    xdg-utils \
+    xdg-utils && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
