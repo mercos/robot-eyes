@@ -5,14 +5,12 @@ const chalk = require('chalk')
 
 const test = require('./commands/test')
 const approve = require('./commands/approve')
-const report = require('./commands/report')
 const init = require('./commands/init')
 
 program
   .command('test <test-file>')
   .description('Run tests')
   .option('-g, --grep <pattern>', 'Only run tests matching <pattern>')
-  .option('-r, --report', 'Open report automatically if tests failed')
   .option('--base-url <url>', 'Override baseURL from robot-eyes.json')
   .action((a, b) => {
     test(a, b.grep)
@@ -22,19 +20,7 @@ program
       .catch((e) => {
         process.exitCode = 1
         console.error(chalk.red(e.message))
-
-        if (b.report) {
-          report()
-        }
       })
-  })
-
-program
-  .command('report')
-  .description('Open report')
-  .option('-p, --port <port-number>', 'Run report on specific port')
-  .action((options) => {
-    report(options.port)
   })
 
 program
