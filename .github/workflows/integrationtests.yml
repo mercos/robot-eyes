@@ -15,3 +15,8 @@ jobs:
       run: docker-compose build
     - name: Test
       run: docker-compose run test
+    - uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: images
+        path: ./integrationTests/images
