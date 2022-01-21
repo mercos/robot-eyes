@@ -3,16 +3,16 @@
   "version": "3.2.1",
   "description": "Visual regression testing",
   "main": "index.js",
+  "scripts": {
+    "test": "mocha './{,!(node_modules)/**}/*.spec.js'",
+    "lint": "eslint ."
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mercos/robot-eyes.git"
   },
   "bin": {
     "robot-eyes": "index.js"
-  },
-  "scripts": {
-    "test": "mocha './{,!(node_modules)/**}/*.spec.js'",
-    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
