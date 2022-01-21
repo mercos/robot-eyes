@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brendonbarreto/robot-eyes.git"
+    "url": "git+https://github.com/mercos/robot-eyes.git"
   },
   "bin": {
     "robot-eyes": "index.js"
@@ -18,9 +18,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/brendonbarreto/robot-eyes/issues"
+    "url": "https://github.com/mercos/robot-eyes/issues"
   },
-  "homepage": "https://github.com/brendonbarreto/robot-eyes#readme",
+  "homepage": "https://github.com/mercos/robot-eyes#readme",
   "dependencies": {
     "canvas": "^2.9.0",
     "chalk": "4.1.2",
