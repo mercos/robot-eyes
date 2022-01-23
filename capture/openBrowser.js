@@ -6,7 +6,8 @@ const openBrowser = config => {
     args: [
       '--no-sandbox',
       "--proxy-server='direct://'",
-      '--proxy-bypass-list=*'
+      '--proxy-bypass-list=*',
+      '--disable-dev-shm-usage'
     ]
   })
 }
