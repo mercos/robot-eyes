@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.0.2] (2023-04-06)
+
+- BREAKING: Removed `report` option `-r`, users should use directly robot-eyes-report
+- Bump node to v16.20
+- Bump general dependencies
+- Cleanup metadata in package.json
+- Multiplatform docker imagens: amd64 and arm64.
+
 ## [3.2.1] (2021-07-02)
 
 - Bump libraries
