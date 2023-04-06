@@ -15,9 +15,9 @@ describe('init command', function () {
     mock.restore()
 
     return new Promise((resolve, reject) => {
-      rimraf('./robot-eyes', {}, err => {
-        err ? reject(err) : resolve()
-      })
+      rimraf('./robot-eyes', {})
+        .then(() => resolve())
+        .catch((err) => reject(err))
     })
   })
 
