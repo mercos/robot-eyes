@@ -1,4 +1,4 @@
-FROM node:16.13.0-alpine
+FROM node:16.20.0-alpine
 
 ARG ROBOT_EYES_VERSION=latest
 
@@ -29,6 +29,6 @@ RUN npm install
 COPY . .
 RUN npm link
 
-ENV NODE_PATH=/usr/local/lib/node_modules
+ENV NODE_PATH=/usr/src/node_modules:/usr/local/lib/node_modules
 
 ENTRYPOINT ["robot-eyes"]
