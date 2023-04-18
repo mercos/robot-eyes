@@ -1,6 +1,6 @@
 # Changelog
 
-## [4.0.2] (2023-04-06)
+## [4.0.3] (2023-04-18)
 
 - BREAKING: Removed `report` option `-r`, users should use directly robot-eyes-report
 - Bump node to v16.20
