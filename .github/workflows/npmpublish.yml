@@ -34,11 +34,5 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Login to Docker Hub
         run: docker login -u mercos -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-      - name: Build Docker Image
-        run: docker buildx build --build-arg ROBOT_EYES_VERSION=${{ env.tag }} --platform=linux/amd64,linux/arm64 -t mercos/robot-eyes:${{ env.tag }} .
-      - name: Push version to DockerHub
-        run: docker push mercos/robot-eyes:${{ env.tag }}
-      - name: Tag Docker Image to latest
-        run: docker tag mercos/robot-eyes:${{ env.tag }} mercos/robot-eyes:latest
-      - name: Push latest to DockerHub
-        run: docker push mercos/robot-eyes:latest
+      - name: Build Docker Image and Push to Docker Hub
+        run: docker buildx build --build-arg ROBOT_EYES_VERSION=${{ env.tag }} --push --platform=linux/amd64,linux/arm64 -t mercos/robot-eyes:${{ env.tag }} -t mercos/robot-eyes:latest .
