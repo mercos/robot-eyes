@@ -14,7 +14,7 @@ const compareImages = (config, fileName, viewport) => {
         testImage,
         {
           ignore: 'nothing',
-          scaleToSameSize: true,
+          scaleToSameSize: false,
           output: {
             largeImageThreshold: 0,
             transparency: 0.3
