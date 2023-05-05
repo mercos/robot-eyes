@@ -26,7 +26,7 @@ const compareImages = (config, fileName, viewport) => {
         await createFolder(`${config.paths.diffImages}/${fileName}`)
         const diffImagePath = getFilePath(config.paths.diffImages, fileName, viewport)
         fs.writeFileSync(diffImagePath, result.getBuffer())
-        reject(new Error(`Images are not the same. See difference at ${diffImagePath}.`))
+        reject(new Error(`Images are not the same (${result.rawMisMatchPercentage}). See difference at ${diffImagePath}.`))
       } else {
         resolve()
       }
