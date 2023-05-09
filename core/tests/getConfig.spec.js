@@ -137,6 +137,48 @@ describe('getConfig', function () {
     compareResolvedAndUnresolvedPath(config.paths.referenceImages, paths.referenceImages)
   })
 
+  it('default resemble options', function () {
+    createEmptyConfigFile()
+
+    const config = getConfig()
+
+    expect(config.resembleOptions.ignore).to.eql('nothing')
+    expect(config.resembleOptions.output.largeImageThreshold).to.eql(0)
+    expect(config.resembleOptions.output.transparency).to.eql(0.3)
+  })
+
+  it('default resemble options should be overrided by config file', function () {
+    const resembleOptions = {
+      ignore: 'antialiasing',
+      output: {
+        largeImageThreshold: 1000,
+        transparency: 0.5
+      }
+    }
+    createConfigFile({ resembleOptions })
+
+    const config = getConfig()
+
+    expect(config.resembleOptions).to.eql(resembleOptions)
+  })
+
+  it('should override only the specified resemble options preserving defaults', function () {
+    const resembleOptions = {
+      output: {
+        transparency: 0.5,
+        errorType: "movement"
+      }
+    }
+    createConfigFile({ resembleOptions })
+
+    const config = getConfig()
+
+    expect(config.resembleOptions.ignore).to.eql('nothing')
+    expect(config.resembleOptions.output.largeImageThreshold).to.eql(0)
+    expect(config.resembleOptions.output.transparency).to.eql(0.5)
+    expect(config.resembleOptions.output.errorType).to.eql("movement")
+  })
+
   const compareResolvedAndUnresolvedPath = (resolved, unresolved) => {
     expect(resolved).to.satisfy(path => path.endsWith(unresolved.replace('.', '')))
   }
