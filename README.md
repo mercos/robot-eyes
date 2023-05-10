@@ -113,18 +113,19 @@ Now let's talk about **how to test your application!**.
 ## Setting up
 After going through all the steps of the getting started section, you are able to configure robot-eyes to your needs. `robot-eyes.json` is the file that contains the general settings, which are valid for all tests. Here's a list of the available options:
 
-| Property        | Description | Default value
-| ------------- |-------------| -------------|
-| `baseURL`      | Link to the main page of your application (shouldn't contain '/'). Example: https://github.com | null |
-| `paths.testImages`      | relative path where temporary test image files will be saved. Example './test_images/'      | './images/test_images' |
-| `paths.diffImages` | relative path where temporary diff image files will be saved. Example './diff_images/'      | './images/diff_images' |
-| `paths.referenceImages` | relative path where the baseline/reference images will be saved. Example './reference_images/'     | './images/reference_images' |
-| `viewports` | Array of objects containing the width and height that will be tested      | `{width: 1920, height: 1080}` |
-| `timeout` | Mocha timeout      | 40000 |
-| `headless` | Chrome browsing mode. Is important to know that, headless and headed generate different images.      | true |
-| `threshold` | Maximum percentage of different pixels for the test to pass     | 0.01 |
-| `waitForResourceTimeout` | Maximum time (in ms) to wait for baseURL to be available     | 60000 |
-
+| Property        | Description | Default value                                                                                                                                                                                                      
+| ------------- |-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `baseURL`      | Link to the main page of your application (shouldn't contain '/'). Example: https://github.com | null                                                                                                                                                                                                               |
+| `paths.testImages`      | relative path where temporary test image files will be saved. Example './test_images/'      | './images/test_images'                                                                                                                                                                                             |
+| `paths.diffImages` | relative path where temporary diff image files will be saved. Example './diff_images/'      | './images/diff_images'                                                                                                                                                                                             |
+| `paths.referenceImages` | relative path where the baseline/reference images will be saved. Example './reference_images/'     | './images/reference_images'                                                                                                                                                                                        |
+| `viewports` | Array of objects containing the width and height that will be tested      | `{width: 1920, height: 1080}`                                                                                                                                                                                      |
+| `timeout` | Mocha timeout      | 40000                                                                                                                                                                                                              |
+| `headless` | Chrome browsing mode. Is important to know that, headless and headed generate different images.      | true                                                                                                                                                                                                               |
+| `threshold` | Maximum percentage of different pixels for the test to pass     | 0.01                                                                                                                                                                                                               |
+| `waitForResourceTimeout` | Maximum time (in ms) to wait for baseURL to be available     | 60000                                                                                                                                                                                                              |
+| `resembleOptions`| Config options for [Resemble.js](https://github.com/rsmbl/Resemble.js). This object is passed directly to Resemble's `compareImages` function. You can set the parameters it will use to compare the images, for instance, change the default `ignore: "nothing"` to `ignore: "antialiasing"` to make it more tolerant to small differences. | <pre><code>{</code><br><code>  ignore: 'nothing',</code><br><code>  output: {</code><br><code>    largeImageThreshold: 0,</code><br><code>    transparency: 0.3</code><br><code>  }</code><br><code>}</code></pre> |  
+                     
 ### Example robot-eyes.json file
 ```javascript
 {

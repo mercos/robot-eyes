@@ -13,5 +13,9 @@
         "testImages": "./images/test",
         "diffImages": "./images/diff",
         "referenceImages": "./images/reference"
+    },
+    "threshold": 0.02,
+    "resembleOptions": {
+      "ignore": ["antialiasing"]
     }
 }

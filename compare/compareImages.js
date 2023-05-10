@@ -12,21 +12,14 @@ const compareImages = (config, fileName, viewport) => {
       const result = await resembleCompare(
         referenceImage,
         testImage,
-        {
-          ignore: 'nothing',
-          scaleToSameSize: true,
-          output: {
-            largeImageThreshold: 0,
-            transparency: 0.3
-          }
-        }
+        config.resembleOptions
       )
 
       if (result.rawMisMatchPercentage > config.threshold) {
         await createFolder(`${config.paths.diffImages}/${fileName}`)
         const diffImagePath = getFilePath(config.paths.diffImages, fileName, viewport)
         fs.writeFileSync(diffImagePath, result.getBuffer())
-        reject(new Error(`Images are not the same. See difference at ${diffImagePath}.`))
+        reject(new Error(`Images are not the same (${result.rawMisMatchPercentage}%). See difference at ${diffImagePath}.`))
       } else {
         resolve()
       }
